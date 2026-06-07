@@ -1,0 +1,41 @@
+# Konfigurasi Supabase CLI — https://supabase.com/docs/guides/cli/config
+project_id = "bank-hemat"
+
+[api]
+enabled = true
+port = 54421
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54422
+shadow_port = 54420
+major_version = 15
+
+[db.migrations]
+enabled = true
+
+[studio]
+enabled = true
+port = 54423
+
+[inbucket]
+enabled = true
+port = 54424
+
+# Nonaktifkan analytics lokal — menghindari bentrok port dengan proyek Supabase lain (mis. warmat-app)
+[analytics]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://localhost:3200"
+additional_redirect_urls = ["http://localhost:3200/**"]
+# Matikan registrasi publik; admin tetap bisa login & ditambah lewat Studio
+enable_signup = false
+
+[auth.email]
+# true = login email aktif; registrasi tetap diblok lewat auth.enable_signup di atas
+enable_signup = true
+enable_confirmations = false
